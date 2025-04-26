@@ -4,6 +4,8 @@ import { Canvas } from '@react-three/fiber';
 import { useTranslation } from 'react-i18next';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import Scene from './components/Scene';
+import LanguageSwitch from './components/LanguageSwitch';
+import ThemeSwitch from './components/ThemeSwitch';
 
 const AppContainer = styled.div<{ theme: any }>`
   min-height: 100vh;
@@ -76,12 +78,8 @@ const Contacts = styled.div<{ theme: any }>`
 `;
 
 const AppContent: React.FC = () => {
-  const { t, i18n } = useTranslation();
-  const { theme, toggleTheme, isDarkMode } = useTheme();
-
-  const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
-  };
+  const { t } = useTranslation();
+  const { theme } = useTheme();
 
   return (
     <AppContainer theme={theme}>
@@ -99,12 +97,8 @@ const AppContent: React.FC = () => {
         </Canvas>
 
         <Controls>
-          <Button theme={theme} onClick={toggleTheme}>
-            {t('theme')} ({isDarkMode ? '🌙' : '☀️'})
-          </Button>
-          <Button theme={theme} onClick={toggleLanguage}>
-            {t('language')} ({i18n.language === 'en' ? '🇬🇧' : '🇷🇺'})
-          </Button>
+          <ThemeSwitch />
+          <LanguageSwitch />
         </Controls>
 
         <Content>

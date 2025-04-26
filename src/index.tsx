@@ -4,6 +4,7 @@ import './i18n';
 import App from './App';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from './theme';
+import GlobalStyles from './styles/GlobalStyles';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -13,6 +14,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={lightTheme}>
+      <GlobalStyles />
       <App />
     </ThemeProvider>
   </React.StrictMode>
